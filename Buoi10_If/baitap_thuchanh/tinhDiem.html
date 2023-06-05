@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <table>
+            <tr>
+                <td>Môn Toán</td>
+                <td>
+                    <input type="number" id="toan" min="0" max="10" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>Môn Văn</td>
+                <td>
+                    <input type="number" id="van" min="0" max="10" />
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>Môn Anh</td>
+                <td>
+                    <input type="number" id="anh" min="0" max="10" />
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>Khu vực</td>
+                <td>
+                    <select id="khuVuc">
+                        <option value="KV1">KV1</option>
+                        <option value="KV2-NT">KV2-NT</option>
+                        <option value="KV2">KV2</option>
+                        <option value="KV3">KV3</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <br>
+    <button type="butotn" onclick="tinhDiem()"> Tính điểm</button>
+    <br><br>
+    <div id="ketQua" style="color: crimson;"></div>
+
+    <script>
+        function tinhDiem() {
+            let diemToan = parseFloat(document.getElementById('toan').value);
+            let diemVan = parseFloat(document.getElementById('van').value);
+            let diemAnh = parseFloat(document.getElementById('anh').value);
+            let khuVuc = document.getElementById('khuVuc').value;
+            let diemKhuVuc;
+
+            switch (khuVuc) {
+                case "KV1":
+                    diemKhuVuc = 0.75;
+                    break;
+                case "KV2-NT":
+                    diemKhuVuc = 0.5;
+                    break;
+                case "KV2":
+                    diemKhuVuc = 0.25;
+                    break;
+                default:
+                    diemKhuVuc = 0;
+            }
+
+
+            let tongDiem = diemToan + diemVan + diemAnh + diemKhuVuc;
+
+            document.getElementById('ketQua').innerHTML = `Tổng điểm ĐH khối D của bạn là: ${tongDiem}`;
+        }
+    </script>
+</body>
+
+</html>
+<!-- Lúc đầu để button "Tính điểm" bên trong form. Sau khi bấm nó hiện kết quả rồi reload mất theo form -->
